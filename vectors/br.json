@@ -1,0 +1,52 @@
+{
+  "$comment": "Vetores compartilháveis (TS, Kotlin/javaValidationsBR, futuro Rust). `reason` presente = inválido.",
+  "cpf": [
+    { "input": "529.982.247-25", "compact": "52998224725", "formatted": "529.982.247-25" },
+    { "input": "52998224725", "compact": "52998224725", "formatted": "529.982.247-25" },
+    { "input": "123.456.789-09", "compact": "12345678909", "formatted": "123.456.789-09" },
+    { "input": "529.982.247-26", "reason": "check-digit" },
+    { "input": "111.111.111-11", "reason": "repeated" },
+    { "input": "123.456.789", "reason": "length" },
+    { "input": "", "reason": "empty" }
+  ],
+  "cnpj": [
+    { "input": "12.ABC.345/01DE-35", "compact": "12ABC34501DE35", "formatted": "12.ABC.345/01DE-35", "note": "exemplo oficial da Receita (alfanumérico)" },
+    { "input": "12abc34501de35", "compact": "12ABC34501DE35", "formatted": "12.ABC.345/01DE-35", "note": "minúsculas são normalizadas" },
+    { "input": "12.345.678/0001-95", "compact": "12345678000195", "formatted": "12.345.678/0001-95" },
+    { "input": "12.ABC.345/01DE-34", "reason": "check-digit" },
+    { "input": "12.ABC.345/01DE-3A", "reason": "characters", "note": "os 2 dígitos verificadores são sempre numéricos" },
+    { "input": "00.000.000/0000-00", "reason": "repeated", "note": "o javaValidationsBR aceita; aqui é recusado" },
+    { "input": "12.ABC.345", "reason": "length" },
+    { "input": "", "reason": "empty" }
+  ],
+  "cep": [
+    { "input": "01310-930", "compact": "01310930", "formatted": "01310-930" },
+    { "input": "01310930", "compact": "01310930", "formatted": "01310-930" },
+    { "input": "1310930", "reason": "length" },
+    { "input": "", "reason": "empty" }
+  ],
+  "phone": [
+    { "input": "(11) 98765-4321", "compact": "11987654321", "formatted": "(11) 98765-4321" },
+    { "input": "11987654321", "compact": "11987654321", "formatted": "(11) 98765-4321" },
+    { "input": "(11) 9876-5432", "compact": "1198765432", "formatted": "(11) 9876-5432" },
+    { "input": "+55 11 98765-4321", "compact": "5511987654321", "formatted": "+55 (11) 98765-4321" },
+    { "input": "551198765432", "compact": "551198765432", "formatted": "+55 (11) 9876-5432" },
+    { "input": "(10) 98765-4321", "reason": "area-code" },
+    { "input": "98765-4321", "reason": "length", "note": "sem DDD: o javaValidationsBR aceita; aqui exige DDD" },
+    { "input": "", "reason": "empty" }
+  ],
+  "uf": [
+    { "input": "SP", "compact": "SP" },
+    { "input": "sp", "compact": "SP" },
+    { "input": "XX", "reason": "characters" },
+    { "input": "", "reason": "empty" }
+  ],
+  "detect": [
+    { "input": "52998224725", "document": "cpf" },
+    { "input": "529.982", "document": "cpf" },
+    { "input": "12ABC34501DE35", "document": "cnpj" },
+    { "input": "12345678000195", "document": "cnpj" },
+    { "input": "12A", "document": "cnpj" },
+    { "input": "...", "document": null }
+  ]
+}

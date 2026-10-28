@@ -1,0 +1,58 @@
+{
+  "name": "@lotexiu/br",
+  "version": "0.0.0",
+  "private": false,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lotexiu/br"
+  },
+  "homepage": "https://github.com/lotexiu/br#readme",
+  "bugs": {
+    "url": "https://github.com/lotexiu/br/issues"
+  },
+  "description": "Documentos e formatos do Brasil (CPF, CNPJ alfanumérico, CEP, telefone, UF) como dados sobre @lotexiu/typescript.",
+  "keywords": [
+    "brasil",
+    "cpf",
+    "cnpj",
+    "cep",
+    "validacao",
+    "lotexiu"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "vectors"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "pnpm clean && vite build && tsc -p tsconfig.json",
+    "clean": "rm -rf dist",
+    "check-types": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --passWithNoTests"
+  },
+  "peerDependencies": {
+    "@lotexiu/typescript": ">=2.0.0"
+  },
+  "devDependencies": {
+    "@lotexiu/typescript": "workspace:*",
+    "@lotexiu/typescript-config": "workspace:*",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16",
+    "vitest": "^4.1.9"
+  }
+}
